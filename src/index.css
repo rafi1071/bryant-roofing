@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@theme {
+  --color-orange-50: #fff5f5;
+  --color-orange-100: #ffe3e3;
+  --color-orange-200: #fecaca;
+  --color-orange-300: #fca5a5;
+  --color-orange-400: #f87171;
+  --color-orange-500: #c90e19; /* Vibrant Bryant Roofing Logo Red */
+  --color-orange-600: #9e0a13; /* Deep Ruby/Burgundy Bryant Roofing background */
+  --color-orange-700: #80070e; /* Deeper Burgundy shadow */
+  --color-orange-800: #65050a;
+  --color-orange-900: #4a0306;
+  --color-orange-950: #2b0103;
+}
