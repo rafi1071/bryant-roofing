@@ -8,19 +8,19 @@ import { Sparkles, ArrowRight, ArrowLeft } from "lucide-react";
 export default function App() {
   const [currentPath, setCurrentPath] = useState("/");
 
-  // Synchronize path state with window location hash
+  // Synchronize path state with window location pathname
   useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash;
-      if (hash === "#/contact" || hash === "#contact") {
+    const handlePathChange = () => {
+      const path = window.location.pathname;
+      if (path === "/contact") {
         setCurrentPath("/contact");
       } else {
         setCurrentPath("/");
       }
     };
-    window.addEventListener("hashchange", handleHashChange);
-    handleHashChange(); // Run once on initialization
-    return () => window.removeEventListener("hashchange", handleHashChange);
+    window.addEventListener("popstate", handlePathChange);
+    handlePathChange(); // Run once on initialization
+    return () => window.removeEventListener("popstate", handlePathChange);
   }, []);
 
   // Update document title and description meta for SEO validation
@@ -100,9 +100,11 @@ export default function App() {
 
   const handleNavigate = (path: string) => {
     if (path === "/contact") {
-      window.location.hash = "#/contact";
+      window.history.pushState({}, "", "/contact");
+      setCurrentPath("/contact");
     } else {
-      window.location.hash = "#/";
+      window.history.pushState({}, "", "/");
+      setCurrentPath("/");
     }
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
